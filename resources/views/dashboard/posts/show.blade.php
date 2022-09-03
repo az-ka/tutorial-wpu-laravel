@@ -8,12 +8,18 @@
                 <a href="/dashboard/posts" class="btn btn-dark">
                     <span data-feather="arrow-left" class="text-white"></span>
                 </a>
-                <a href="" class="btn btn-dark mx-2">
+                <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-dark mx-2 my-3">
                     <span data-feather="edit-2" class="text-white"></span>
                 </a>
-                <a href="" class="btn btn-dark my-3">
-                    <span data-feather="x" class="text-white"></span>
-                </a>
+                <form action="/dashboard/posts/{{ $post->slug }}" class="d-inline" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="border-0 btn btn-dark" onclick="return confirm('Are Your Sure?')">
+                        <span data-feather="x" class="text-white"></span>
+                    </button>
+                </form>
+
+
 
                 <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}"
                     alt="{{ $post->category->name }}" class="img-fluid">

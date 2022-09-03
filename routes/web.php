@@ -79,7 +79,15 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->middleware('auth');
 
+
 Route::resource('/dashboard/posts/', DashboardPostController::class)->except([
-    'show',
+    'show', 'destroy', 'edit', 'update',
 ])->middleware('auth');
+// Detail
 Route::get('/dashboard/posts/{post:slug}', [DashboardPostController::class, 'show'])->middleware('auth');
+// Delete
+Route::delete('/dashboard/posts/{post:slug}', [DashboardPostController::class, 'destroy'])->middleware('auth');
+// Edit
+Route::get('/dashboard/posts/{post:slug}/edit', [DashboardPostController::class, 'edit'])->middleware('auth');
+
+Route::put('/dashboard/posts/{post:id}', [DashboardPostController::class, 'update'])->middleware('auth');
