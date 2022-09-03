@@ -2,21 +2,24 @@
 
 @section('container')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+        <div class="row my-3">
+            <div class="col-lg-8">
                 <h2>{{ $post->title }}</h2>
-                <p>By: <a href="/posts?author={{ $post->author->username }}"
-                        class="text-decoration-none">{{ $post->author->name }}</a> In
-                    <a href="/posts?categories={{ $post->category->slug }}">{{ $post->category->name }}</a>
-                </p>
+                <a href="/dashboard/posts" class="btn btn-dark">
+                    <span data-feather="arrow-left" class="text-white"></span>
+                </a>
+                <a href="" class="btn btn-dark mx-2">
+                    <span data-feather="edit-2" class="text-white"></span>
+                </a>
+                <a href="" class="btn btn-dark my-3">
+                    <span data-feather="x" class="text-white"></span>
+                </a>
 
-                <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" alt="{{ $post->category->name }}"
-                    class="img-fluid">
+                <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}"
+                    alt="{{ $post->category->name }}" class="img-fluid">
                 <article class="my-3 fs-5">
                     {!! $post->body !!}
                 </article>
-
-                <a href="/posts" class="d-block mt-3">Back to Posts</a>
             </div>
         </div>
     </div>

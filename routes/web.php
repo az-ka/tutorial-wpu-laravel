@@ -79,4 +79,7 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->middleware('auth');
 
-Route::resource('/dashboard/posts/', DashboardPostController::class)->middleware('auth');
+Route::resource('/dashboard/posts/', DashboardPostController::class)->except([
+    'show',
+])->middleware('auth');
+Route::get('/dashboard/posts/{post:slug}', [DashboardPostController::class, 'show'])->middleware('auth');
