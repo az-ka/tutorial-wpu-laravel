@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\LoginController;
@@ -91,3 +92,5 @@ Route::delete('/dashboard/posts/{post:slug}', [DashboardPostController::class, '
 Route::get('/dashboard/posts/{post:slug}/edit', [DashboardPostController::class, 'edit'])->middleware('auth');
 
 Route::put('/dashboard/posts/{post:id}', [DashboardPostController::class, 'update'])->middleware('auth');
+
+Route::resource('dashboard/categories', AdminCategoryController::class)->middleware('admin');
